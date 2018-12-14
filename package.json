@@ -1,0 +1,32 @@
+{
+  "name": "ts-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/wyf199605/ts-react.git"
+  },
+  "keywords": [
+    "wyf"
+  ],
+  "author": "wyf",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
+    "node-sass": "^4.10.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "sass-loader": "^7.1.0"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.2.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
