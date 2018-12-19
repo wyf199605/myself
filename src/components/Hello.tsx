@@ -9,6 +9,6 @@ export class Hello extends React.Component<IHelloProp, {}> {
         super(props);
     }
     render() {
-        return <h1>Hello from {this.props.name}!</h1>;
+        return <h1 className="hello">Hello from {this.props.name}!</h1>;
     }
 }
