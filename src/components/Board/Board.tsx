@@ -14,6 +14,8 @@ interface IBoardState{
 
 // 棋盘
 export class Board extends React.Component<IBoardPara, IBoardState>{
+    protected isEnd: boolean = false;
+
     constructor(para: IBoardPara){
         super(para);
         this.state = {
@@ -22,10 +24,11 @@ export class Board extends React.Component<IBoardPara, IBoardState>{
         }
     }
 
-    protected isEnd: boolean = false;
-
     renderSquare(i: number): React.ReactElement<Square>{
-        return <Square value={this.state.squares[i]} onClick={() => {this.handleClick(i)}}/>;
+        return <Square
+            value={this.state.squares[i]}
+            onClick={() => {this.handleClick(i)}}
+        />;
     }
 
     handleClick(index: number){
@@ -62,7 +65,7 @@ export class Board extends React.Component<IBoardPara, IBoardState>{
     replay(){
         this.setState({
             squares: Array.from({length: 9}, () => null),
-            xIsNext: true,
+            xIsNext: true
         });
         this.isEnd = false;
     }
@@ -71,12 +74,13 @@ export class Board extends React.Component<IBoardPara, IBoardState>{
         const winner = Board.calculateWinner(this.state.squares);
         let status;
         if (winner) {
-            status = '胜利者：' + winner;
+            status = '游戏结束，胜利者：' + winner;
             this.isEnd = true;
         } else {
             status = '下一个：' + (this.state.xIsNext ? 'X' : 'O');
             if(this.state.squares.every((str) => !!str)){
-                status = '游戏结束'
+                status = '游戏结束';
+                this.isEnd = true;
             }
         }
 
