@@ -30,11 +30,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 */
 
 declare module 'module' {
-    var mod: {
+    let mod: {
         config: () => any;
         id: string;
         uri: string;
-    }
+    };
     export = mod;
 }
 
@@ -203,7 +203,7 @@ interface RequireConfig {
 
      * requirejs.config({
 	* 	urlArgs: function(id, url) {
-	* 		var args = 'v=1';
+	* 		let args = 'v=1';
 	*		if (url.indexOf('view.html') !== -1) {
 	* 			args = 'v=2'
 	* 		}
@@ -418,6 +418,6 @@ interface RequireDefine {
 }
 
 // Ambient declarations for 'require' and 'define'
-declare var requirejs: Require;
-declare var require: Require;
-declare var define: RequireDefine;
+declare let requirejs: Require;
+declare let require: Require;
+declare let define: RequireDefine;
