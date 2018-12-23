@@ -8,3 +8,5 @@ type obj = objOf<any>;
 
 // ECMA原始类型，即 Undefined、Null、Boolean、Number 和 String。
 type Primitive = string | number | boolean;
+
+type dataList = string[] | number[] | Array<{text: string, value: any}>;
