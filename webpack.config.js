@@ -5,7 +5,8 @@ module.exports = (env, argv) => {
 
     return {
         entry: {
-            build: "./src/index.tsx"
+            build: "./src/index.tsx",
+            test: "./src/test.tsx"
         },
         output: {
             filename: "[name].js",
