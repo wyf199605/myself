@@ -17,11 +17,28 @@ export class Hello extends React.Component<IHelloProp, IState> {
 
     protected wrapper: HTMLElement;
 
+    static defaultProps = {
+        data: {
+            msg: "hello"
+        },
+        name: 'wyf'
+    };
+
     render() {
         console.log(this.props);
         return <div ref={(el) => this.wrapper = el} className="hello-wrapper">
             <h1 className="hello">Hello from {this.props.name}!</h1>
-            <Link to="/board">to board</Link>
+            <ul>
+                <li>
+                    <Link to="/board">to board</Link>
+                </li>
+                <li>
+                    <Link to="/my-test">to test</Link>
+                </li>
+                <li>
+                    <Link to="/login">to login</Link>
+                </li>
+            </ul>
         </div>;
     }
 

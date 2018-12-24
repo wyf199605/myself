@@ -141,6 +141,36 @@ exports.Tools = {
     },
     isNotEmpty: function (val) {
         return !exports.Tools.isEmpty(val);
+    },
+    pattern: {
+        throttling: function (action, delay) {
+            var last = 0;
+            return function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                var curr = +new Date();
+                if (curr - last > delay) {
+                    action.apply(this, args);
+                    last = curr;
+                }
+            };
+        },
+        debounce: function (method, delay) {
+            var timer = null;
+            return function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                var context = this;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    method.apply(context, args);
+                }, delay);
+            };
+        }
     }
 };
 
