@@ -23,5 +23,27 @@ export const Tools = {
     },
     isNotEmpty(val: any){
         return !Tools.isEmpty(val);
+    },
+    pattern: {
+        throttling: function(action: Function, delay: number){ // 函数节流
+            let last = 0;
+            return function(...args: any[]){
+                let curr = + new Date();
+                if (curr - last > delay){
+                    action.apply(this, args) ;
+                    last = curr
+                }
+            }
+        },
+        debounce: function (method: Function, delay: number){ // 函数防抖
+            let timer: number = null;
+            return function(...args: any[]){
+                let context = this;
+                clearTimeout(timer);
+                timer = setTimeout(function(){
+                    method.apply(context, args);
+                },delay);
+            }
+        }
     }
 };
