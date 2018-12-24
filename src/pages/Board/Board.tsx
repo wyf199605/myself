@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {Square} from "../Square/Square";
+import {Square} from "../../components/Square/Square";
 import "./Board.scss";
 
 interface IBoardPara{

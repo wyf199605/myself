@@ -3,15 +3,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = (env, argv) => {
     let isDevelop = argv.mode === 'development';
 
-    return {
-        entry: {
-            build: "./src/index.tsx",
-            test: "./src/test.tsx"
-        },
-        output: {
-            filename: "[name].js",
-            path: __dirname + "/dist"
-        },
+    // 公用配置
+    let config = {
 
         // Enable sourcemaps for debugging webpack's output.
         devtool: "source-map",
@@ -32,6 +25,7 @@ module.exports = (env, argv) => {
                 // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
                 {test: /\.tsx?$/, loader: "awesome-typescript-loader"},
 
+                // 使用file-loader处理图片文件
                 {
                     test: /\.(png|svg|jpg|gif)$/,
                     use: [
@@ -49,6 +43,7 @@ module.exports = (env, argv) => {
                     test: /\.scss$/,
                     use: [
                         {
+                            // 将css文件打包成一个文件
                             loader: MiniCssExtractPlugin.loader
                         },
                         "css-loader",
@@ -71,6 +66,36 @@ module.exports = (env, argv) => {
         externals: {
             "react": "React",
             "react-dom": "ReactDOM"
+        },
+        devServer: {
+            contentBase: __dirname,
+            compress: true,
+            port: 9000,
+            index: 'index.html',
+            disableHostCheck: true, // 为true时绕过主机检查。
+            historyApiFallback: true // 解决刷新页面出现Cannot GET /page的错误
         }
     };
+
+    // 设置各自出入口配置
+    return [
+        {
+            entry: {
+                build: "./src/app.tsx"
+            },
+            output: {
+                filename: "[name].js",
+                path: __dirname + "/dist"
+            }
+        },
+        {
+            entry: {
+                test: "./src/test.tsx"
+            },
+            output: {
+                filename: "[name].js",
+                path: __dirname + "/test"
+            }
+        }
+    ].map(obj => Object.assign(obj, config));
 };

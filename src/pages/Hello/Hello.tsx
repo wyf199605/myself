@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 
 export interface IHelloProp{
     name: string;
@@ -20,6 +21,7 @@ export class Hello extends React.Component<IHelloProp, IState> {
         console.log(this.props);
         return <div ref={(el) => this.wrapper = el} className="hello-wrapper">
             <h1 className="hello">Hello from {this.props.name}!</h1>
+            <Link to="/board">to board</Link>
         </div>;
     }
 
