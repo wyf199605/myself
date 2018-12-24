@@ -1,5 +1,4 @@
 node_modules/
 /dist/
 .idea/
-test/test.js
-test/test.js.map
+test/
