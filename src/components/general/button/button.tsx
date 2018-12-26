@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './button.scss';
-import {Tools} from "../../utils/tools";
+import {Tools} from "../../../utils/tools";
 
 export interface IButton {
     text: string;

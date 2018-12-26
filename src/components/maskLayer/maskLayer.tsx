@@ -18,7 +18,8 @@ export class MaskLayer extends React.Component<IMaskLayer>{
         isAnimated: true,
     };
 
-    clickHandler(){
+    clickHandler(e: React.MouseEvent){
+        e.preventDefault();
         this.props.onClick && this.props.onClick();
     }
 
@@ -35,8 +36,8 @@ export class MaskLayer extends React.Component<IMaskLayer>{
                 isShow ? null : 'hide',
                 isAnimated ? 'animation' : null,
             ].join(' ')
-        } onClick={() => {
-            this.clickHandler();
-        }}/>
+        } onClick={(e) => {
+            this.clickHandler(e);
+        }} />
     }
 }

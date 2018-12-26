@@ -14,6 +14,20 @@
   -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
   box-shadow: 0 3px 9px rgba(0,0,0,.5);
   padding: 0;
+  animation: modal-animation .2s;
+
+  &.full-screen-modal{
+    width: 100%!important;
+    height: 100%!important;
+    top: 0!important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &:focus{
+    outline: none;
+  }
 
   .modal-header{
     padding: 0;
@@ -23,6 +37,11 @@
       line-height: 40px;
       font-size: 14px;
       padding-left: 15px;
+
+      &.text-center{
+        padding-left: 0;
+        text-align: center;
+      }
     }
 
     .modal-control{
@@ -39,5 +58,41 @@
         padding-left: 8px;
       }
     }
+  }
+
+  .modal-footer{
+    text-align: left;
+    padding: 0 15px;
+
+    &::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .footer-panel{
+      height: 39px;
+      line-height: 39px;
+
+      .btn {
+        padding: 4px 12px;
+      }
+    }
+
+    .footer-right-panel{
+      float: right;
+    }
+    .footer-left-panel{
+      float: left;
+    }
+  }
+}
+
+@keyframes modal-animation {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0);
   }
 }
