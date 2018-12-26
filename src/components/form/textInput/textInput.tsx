@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {FormCom, IFormComPara, IFormComState} from "../basic";
-import './textInput.scss'
+import './textInput.scss';
 
 interface ITextInput extends IFormComPara {
     type?: 'text' | 'password';

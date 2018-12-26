@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Redirect, Switch,  } from 'react-router';
+import { Route, Redirect, Switch, Prompt } from 'react-router';
 import {Hello} from "./pages/Hello/Hello";
 import {Board} from "./pages/Board/Board";
 import {Test} from "./pages/Test/Test";
@@ -24,3 +24,17 @@ export class AppRouter extends React.Component{
         console.log(error, info);
     }
 }
+
+/*
+* Prompt
+*
+* 该组件主要作用是,在用户准备离开该页面时, 弹出提示
+* 返回true或者false, 如果为true, 则离开页面, 如果为false, 则停留在该页面
+* */
+
+/*
+* Switch
+*
+* 渲染与位置匹配的第一个子元素<Route> 或 <Redirect>
+* 只会渲染一个Route
+* */

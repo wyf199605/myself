@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {TextInput} from "../../components/form/textInput/textInput";
+import {Modal} from "../../components/modal/modal";
 
-export class Test extends React.Component<{}, {val: string}>{
+export class Test extends React.Component<{}, obj>{
     constructor(props: obj){
         super(props);
         this.state = {
-            val: '1'
+            val: '1',
+            isShow: true
         }
     }
 
@@ -15,6 +17,11 @@ export class Test extends React.Component<{}, {val: string}>{
                 console.log(val);
                 this.setState({val})
             }}/>
+            <Modal isShow={this.state.isShow}>aaa</Modal>
         </div>
+    }
+
+    componentDidMount(){
+
     }
 }

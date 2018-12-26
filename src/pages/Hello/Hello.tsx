@@ -25,7 +25,6 @@ export class Hello extends React.Component<IHelloProp, IState> {
     };
 
     render() {
-        console.log(this.props);
         return <div ref={(el) => this.wrapper = el} className="hello-wrapper">
             <h1 className="hello">Hello from {this.props.name}!</h1>
             <ul>
@@ -36,7 +35,11 @@ export class Hello extends React.Component<IHelloProp, IState> {
                     <Link to="/my-test">to test</Link>
                 </li>
                 <li>
-                    <Link to="/login">to login</Link>
+                    <Link to={{
+                        pathname: '/login',
+                        search: '?sort=name&a=b',
+                        state: { fromDashboard: true }
+                    }}>to login</Link>
                 </li>
             </ul>
         </div>;

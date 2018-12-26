@@ -18,6 +18,7 @@ export class LoginPage extends React.Component<{}, ILoginState>{
     }
 
     render(){
+        console.log(this.props);
         return <div className="login-page">
             <header className="login-header">
 
