@@ -11,6 +11,7 @@ export interface IModal {
     footer?: IModalFooterPara; // 设置模态框尾部
     width?: number;
     closeMsg?: string; // 关闭消息，默认无
+    isAnimated?: boolean // 是否有动画，默认true
 }
 
 interface IModalHeaderPara {
@@ -47,7 +48,8 @@ export class Modal extends React.Component<IModal, IModalState> {
         isBackground: true,
         isShow: false,
         width: 600,
-        header: '提示'
+        header: '提示',
+        isAnimated: true
     };
 
     protected closeModal() {

@@ -22,7 +22,7 @@ export class Test extends React.Component<{}, obj>{
             <Button text="show" onClick={() => {
                 this.setState({isShow: true})
             }}/>
-            <Modal isShow={this.state.isShow} header={{
+            <Modal isShow={this.state.isShow} isBackground={false} header={{
                 title: '提示',
                 isLager: true
             }} footer={{

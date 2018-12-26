@@ -15,14 +15,27 @@
   box-shadow: 0 3px 9px rgba(0,0,0,.5);
   padding: 0;
   animation: modal-animation .2s;
+  transition: top .3s, bottom .3s, right .3s,left .3s, width .3s, height .3s;
 
   &.full-screen-modal{
     width: 100%!important;
-    height: 100%!important;
+    height: 100% !important;
     top: 0!important;
     left: 0;
     right: 0;
     bottom: 0;
+    animation: modal-lager .4s;
+
+    .modal-body{
+      height: calc(100% - 80px);
+    }
+
+    .modal-footer{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
   }
 
   &:focus{
@@ -60,6 +73,10 @@
     }
   }
 
+  .modal-body {
+    overflow: auto;
+  }
+
   .modal-footer{
     text-align: left;
     padding: 0 15px;
@@ -94,5 +111,14 @@
   }
   100%{
     transform: translateY(0);
+  }
+}
+
+@keyframes modal-lager {
+  0%{
+    transform: scale(0, 0);
+  }
+  100%{
+    transform: scale(1, 1);
   }
 }
