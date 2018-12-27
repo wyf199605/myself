@@ -14,8 +14,11 @@
   -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
   box-shadow: 0 3px 9px rgba(0,0,0,.5);
   padding: 0;
-  animation: modal-animation .2s;
-  transition: top .3s, bottom .3s, right .3s,left .3s, width .3s, height .3s;
+
+  &.animation{
+    animation: bounceInDown .8s;
+  }
+  //transition: bottom .3s, right .3s,left .3s, width .3s, height .3s;
 
   &.full-screen-modal{
     width: 100%!important;
@@ -24,7 +27,14 @@
     left: 0;
     right: 0;
     bottom: 0;
-    animation: modal-lager .4s;
+    &.animation {
+      -webkit-animation-name: zoomIn;
+      animation-name: zoomIn;
+      -webkit-animation-duration: .6s;
+      animation-duration: .6s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
 
     .modal-body{
       height: calc(100% - 80px);
@@ -78,8 +88,10 @@
   }
 
   .modal-footer{
+    position: relative;
     text-align: left;
-    padding: 0 15px;
+    padding: 0;
+    height: 50px;
 
     &::after{
       content: "";
@@ -88,8 +100,8 @@
     }
 
     .footer-panel{
-      height: 39px;
-      line-height: 39px;
+      //height: 49px;
+      position: absolute;
 
       .btn {
         padding: 4px 12px;
@@ -97,28 +109,68 @@
     }
 
     .footer-right-panel{
-      float: right;
+      top: 8px;
+      right:15px;
     }
     .footer-left-panel{
-      float: left;
+      top: 8px;
+      left:15px;
     }
   }
 }
 
-@keyframes modal-animation {
-  0%{
-    transform: translateY(-100%);
+@keyframes bounceInDown {
+  0%,60%,75%,90%,to {
+    -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+    animation-timing-function: cubic-bezier(.215,.61,.355,1)
   }
-  100%{
-    transform: translateY(0);
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0,-3000px,0);
+    transform: translate3d(0,-3000px,0)
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0,25px,0);
+    transform: translate3d(0,25px,0)
+  }
+
+  75% {
+    -webkit-transform: translate3d(0,-10px,0);
+    transform: translate3d(0,-10px,0)
+  }
+
+  90% {
+    -webkit-transform: translate3d(0,5px,0);
+    transform: translate3d(0,5px,0)
+  }
+
+  to {
+    -webkit-transform: none;
+    transform: none
   }
 }
 
-@keyframes modal-lager {
-  0%{
-    transform: scale(0, 0);
+@keyframes animate-fadein-center {
+  from {
+    opacity: 0;
+    transform: perspective(1px) scale(1.185);
   }
-  100%{
-    transform: scale(1, 1);
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3,.3,.3);
+    transform: scale3d(.3,.3,.3);
+  }
+  50% {
+    opacity: 1;
   }
 }
