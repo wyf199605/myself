@@ -16,7 +16,7 @@
   padding: 0;
 
   &.animation{
-    animation: bounceInDown .8s;
+    animation: bounceInDown .7s;
   }
   //transition: bottom .3s, right .3s,left .3s, width .3s, height .3s;
 
@@ -30,8 +30,8 @@
     &.animation {
       -webkit-animation-name: zoomIn;
       animation-name: zoomIn;
-      -webkit-animation-duration: .6s;
-      animation-duration: .6s;
+      -webkit-animation-duration: .4s;
+      animation-duration: .4s;
       -webkit-animation-fill-mode: both;
       animation-fill-mode: both;
     }

@@ -22,7 +22,7 @@ export class Test extends React.Component<{}, obj>{
             <Button text="show" onClick={() => {
                 this.setState({isShow: true})
             }}/>
-            <Modal isShow={this.state.isShow} isBackground={true} header={{
+            <Modal isOnceDestroy={true} isShow={this.state.isShow} isBackground={true} header={{
                 title: '提示',
                 isLager: true
             }} footer={{
@@ -37,6 +37,6 @@ export class Test extends React.Component<{}, obj>{
     }
 
     componentDidMount(){
-
+        Modal.alert('')
     }
 }
