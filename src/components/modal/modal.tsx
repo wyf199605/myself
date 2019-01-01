@@ -61,7 +61,6 @@ export class Modal extends React.Component<IModal, IModalState> {
     }
 
     componentWillReceiveProps(nextProps: IModal) {
-        console.log(nextProps);
         this.setState((prevState) => {
             let isRender = prevState.isRender;
             if(prevState.isOnceRender && !prevState.isShow){

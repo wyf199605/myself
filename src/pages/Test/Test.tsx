@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {TextInput} from "../../components/form/textInput/textInput";
 import {Button} from "../../components/general";
 import {Modal} from "../../components/modal";
+import {TextInput} from "../../components/form";
 
 export class Test extends React.Component<{}, obj>{
     constructor(props: obj){
@@ -14,8 +14,7 @@ export class Test extends React.Component<{}, obj>{
 
     render(){
         return <div>
-            <TextInput defaultValue={this.state.val} onSet={(val) => {
-                console.log(val);
+            <TextInput isStyle={false} icon="search" iconPosition="right" defaultValue={this.state.val} onSet={(val) => {
                 this.setState({val})
             }}/>
             <div>
@@ -24,7 +23,7 @@ export class Test extends React.Component<{}, obj>{
                 }}/>
             </div>
             <div>
-                <Button disabled={false} text="show" type="primary"/>
+                <Button icon={'search'} disabled={false} text="show" type="primary"/>
             </div>
             <div>
                 <Button disabled={false} text="show" type="info"/>
@@ -38,7 +37,10 @@ export class Test extends React.Component<{}, obj>{
             <div>
                 <Button disabled={false} text="show" type="link"/>
             </div>
-            <Modal isOnceRender={false} isShow={this.state.isShow} isBackground={true} header={{
+            <Modal isOnceRender={false} isShow={this.state.isShow} onClose={() => {
+                this.setState({isShow: false});
+            }
+            } isBackground={true} header={{
                 title: '提示',
                 isLager: true
             }} footer={{

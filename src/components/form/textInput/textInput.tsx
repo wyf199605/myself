@@ -6,6 +6,10 @@ interface ITextInput extends IFormComPara {
     placeholder?: string;
     readonly?: boolean;
     disabled?: boolean;
+    isStyle?: boolean;
+    icon?: string;
+    iconPosition?: 'left' | 'right';
+    iconClick?: Function;
 }
 
 interface ITextInputSate extends IFormComState {
@@ -24,7 +28,9 @@ export class TextInput extends FormCom<ITextInput, ITextInputSate> {
         placeholder: '',
         readonly: false,
         disabled: false,
-        type: 'text'
+        type: 'text',
+        isStyle: true,
+        iconPosition: 'left'
     };
 
     protected input: HTMLInputElement;
@@ -36,10 +42,31 @@ export class TextInput extends FormCom<ITextInput, ITextInputSate> {
     }
 
     render() {
-        return <div className="text-wrapper">
-            <input type={this.props.type}
-                   placeholder={this.props.placeholder}
-                   disabled={this.props.disabled}
+        let {
+            type,
+            disabled,
+            placeholder,
+            isStyle,
+            icon,
+            iconPosition,
+            iconClick
+        } = this.props;
+
+        return <div className={
+            [
+                'text-wrapper',
+                disabled ? 'disabled' : null,
+                isStyle ? null : 'text-space'
+            ].filter((className) => className).join(' ')
+        }>
+            <span className={'input-icon input-icon-' + iconPosition} onClick={() => {
+                iconClick && iconClick();
+            }}>
+                <span className={"iconfont icon-" + icon}/>
+            </span>
+            <input type={type}
+                   placeholder={placeholder}
+                   disabled={disabled}
                    ref={(element) => {
                        this.input = element;
                        // this.input.readOnly = this.props.readonly;

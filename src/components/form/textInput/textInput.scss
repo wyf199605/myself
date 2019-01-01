@@ -1,9 +1,59 @@
 .text-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .input-icon {
+    position: absolute;
+    width: 32px;
+    height: 100%;
+    top: 0;
+    z-index: 1;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .input-icon-left {
+    left: 0;
+    & + input {
+      padding-left: 32px;
+    }
+  }
+
+  .input-icon-right {
+    right: 0;
+    & + input {
+      padding-right: 32px;
+    }
+  }
+
   input {
     font-size: 16px;
+    height: 32px;
+    line-height: 1.5;
+    padding: 4px 7px;
+    position: relative;
+    cursor: text;
+    transition: border .2s ease-in-out, background .2s ease-in-out, box-shadow .2s ease-in-out;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
 
-    &:focus{
+    &:focus {
       outline: none;
+      border-color: $primary;
+    }
+  }
+
+  &.text-space {
+    display: block;
+    input {
+      width: 100%;
+      border: none;
+      border-radius: 0;
+
+      &:focus {
+        border: none;
+      }
     }
   }
 }
