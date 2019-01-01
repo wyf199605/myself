@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './maskLayer.scss';
 
 export interface IMaskLayer{
     isShow?: boolean; // 是否显示，默认false

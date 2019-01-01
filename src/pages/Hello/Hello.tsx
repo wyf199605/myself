@@ -29,9 +29,6 @@ export class Hello extends React.Component<IHelloProp, IState> {
             <h1 className="hello">Hello from {this.props.name}!</h1>
             <ul>
                 <li>
-                    <Link to="/board">to board</Link>
-                </li>
-                <li>
                     <Link to="/my-test">to test</Link>
                 </li>
                 <li>

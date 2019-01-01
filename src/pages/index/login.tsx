@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {TextInput} from "../../components/form/textInput/textInput";
 import './login.scss';
-import {Button} from "../../components/general/button/button";
+import {Button} from "../../components/general";
+import {TextInput} from "../../components/form";
 
 interface ILoginState {
     password: string;

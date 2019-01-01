@@ -1,4 +1,4 @@
-export const Tools = {
+const Tools = {
     isEmpty(val: any){
         if(typeof val === 'undefined'){
             // undefined为空
@@ -47,3 +47,4 @@ export const Tools = {
         }
     }
 };
+export default Tools;

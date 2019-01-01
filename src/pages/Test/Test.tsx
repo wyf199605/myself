@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {TextInput} from "../../components/form/textInput/textInput";
-import {Modal} from "../../components/modal/modal";
-import {BtnGroup} from "../../components/general/btnGroup/btnGroup";
-import {Button} from "../../components/general/button/button";
+import {Button} from "../../components/general";
+import {Modal} from "../../components/modal";
 
 export class Test extends React.Component<{}, obj>{
     constructor(props: obj){
@@ -22,7 +21,7 @@ export class Test extends React.Component<{}, obj>{
             <Button text="show" onClick={() => {
                 this.setState({isShow: true})
             }}/>
-            <Modal isOnceDestroy={true} isShow={this.state.isShow} isBackground={true} header={{
+            <Modal isOnceRender={false} isShow={this.state.isShow} isBackground={true} header={{
                 title: '提示',
                 isLager: true
             }} footer={{
@@ -37,6 +36,6 @@ export class Test extends React.Component<{}, obj>{
     }
 
     componentDidMount(){
-        Modal.alert('')
+        Modal.alert('aa');
     }
 }
