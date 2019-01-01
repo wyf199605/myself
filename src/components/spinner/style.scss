@@ -1,0 +1,65 @@
+.spinner-wrapper{
+  display: inline-block;
+
+  .spinning{
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    animation: antRotate 1.2s infinite linear;
+
+    i{
+      width: 9px;
+      height: 9px;
+      border-radius: 100%;
+      background-color: #1890ff;
+      -webkit-transform: scale(.75);
+      -ms-transform: scale(.75);
+      transform: scale(.75);
+      display: block;
+      position: absolute;
+      opacity: .3;
+      -webkit-animation: antSpinMove 1s infinite linear alternate;
+      animation: antSpinMove 1s infinite linear alternate;
+      -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+    }
+
+    i:nth-child(1){
+      left: 0;
+      top: 0;
+    }
+
+    i:nth-child(2){
+      right: 0;
+      top: 0;
+    }
+
+    i:nth-child(3){
+      right: 0;
+      bottom: 0;
+    }
+
+    i:nth-child(4){
+      left: 0;
+      bottom: 0;
+    }
+  }
+}
+
+
+@keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg)
+  }
+}
+
+@keyframes antSpinMove{
+  to{
+    opacity:1;
+  }
+}

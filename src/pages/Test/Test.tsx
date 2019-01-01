@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Button} from "../../components/general";
 import {Modal} from "../../components/modal";
 import {TextInput} from "../../components/form";
+import {Spinner} from "../../components/spinner";
 
 export class Test extends React.Component<{}, obj>{
     constructor(props: obj){
@@ -14,6 +15,7 @@ export class Test extends React.Component<{}, obj>{
 
     render(){
         return <div>
+            <Spinner/>
             <TextInput isStyle={false} icon="search" iconPosition="right" defaultValue={this.state.val} onSet={(val) => {
                 this.setState({val})
             }}/>
