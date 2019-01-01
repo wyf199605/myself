@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './button.scss';
 import Util from "../../__utils";
 
 const tools = Util.tools;
@@ -9,7 +8,7 @@ export interface IButton {
     onClick?: Function;
     disabled?: boolean;
     btnType?: 'button' | 'submit' | 'reset';
-    type?: 'primary' | 'default' | 'success' | 'info' | 'danger' | 'link';
+    type?: 'primary' | 'default' | 'warn' | 'success' | 'info' | 'danger' | 'link';
     size?: 'lg' | 'sm' | 'xs';
     isBlock?: boolean;
     icon?: string;

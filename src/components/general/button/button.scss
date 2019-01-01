@@ -1,4 +1,10 @@
-.btn{
+@mixin btn-color($color, $border-color: $color, $text-color: #fff) {
+  background: $color;
+  color: $text-color;
+  border-color: $border-color;
+}
+
+.btn {
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
@@ -18,17 +24,72 @@
   border: 1px solid transparent;
   border-radius: 4px;
 
-
-  &.btn-default{
+  span {
+    color: inherit;
   }
-  &:hover, &:active, &:focus{
+
+  &:hover, &:active, &:focus {
     background: #fff;
     outline: none;
 
   }
 
-  &.btn-block{
+  &.btn-block {
     display: block;
     width: 100%;
   }
+
+  &:not([disabled]):hover {
+    opacity: .85;
+  }
+
+  &:not([disabled]):active {
+    opacity: 1;
+  }
+
+  &.btn-default {
+    @include btn-color(#fff, $default, $text);
+    &:not([disabled]):hover {
+      @include btn-color(#fff, $primary, $primary);
+    }
+  }
+
+  &.btn-primary {
+    @include btn-color($primary);
+  }
+
+  &.btn-info {
+    @include btn-color($info);
+  }
+
+  &.btn-warn {
+    @include btn-color($warn);
+  }
+
+  &.btn-success {
+    @include btn-color($success);
+  }
+
+  &.btn-danger {
+    @include btn-color($error);
+  }
+
+  &.btn-link {
+    @include btn-color(transparent, transparent, $text);
+    &:not([disabled]):hover {
+      @include btn-color(transparent, transparent, $link);
+    }
+  }
+
+  &[disabled], &[disabled]:hover, &[disabled]:active, &[disabled]:focus {
+    cursor: not-allowed;
+    pointer-events: auto;
+    box-shadow: none;
+    opacity: .6;
+  }
+
+  & + .btn{
+    margin-left: 5px;
+  }
+
 }

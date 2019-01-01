@@ -18,9 +18,26 @@ export class Test extends React.Component<{}, obj>{
                 console.log(val);
                 this.setState({val})
             }}/>
-            <Button text="show" onClick={() => {
-                this.setState({isShow: true})
-            }}/>
+            <div>
+                <Button disabled={false} text="show" onClick={() => {
+                    this.setState({isShow: true})
+                }}/>
+            </div>
+            <div>
+                <Button disabled={false} text="show" type="primary"/>
+            </div>
+            <div>
+                <Button disabled={false} text="show" type="info"/>
+            </div>
+            <div>
+                <Button disabled={false} text="show" type="success"/>
+            </div>
+            <div>
+                <Button disabled={false} text="show" type="danger"/>
+            </div>
+            <div>
+                <Button disabled={false} text="show" type="link"/>
+            </div>
             <Modal isOnceRender={false} isShow={this.state.isShow} isBackground={true} header={{
                 title: '提示',
                 isLager: true
@@ -36,6 +53,11 @@ export class Test extends React.Component<{}, obj>{
     }
 
     componentDidMount(){
-        Modal.alert('aa');
+        Modal.confirm({
+            msg: 'aaaa',
+            onClick: (flag) => {
+                console.log(flag);
+            }
+        });
     }
 }

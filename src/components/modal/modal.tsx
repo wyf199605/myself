@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {modalAlert} from "./modalAlert";
+import {modalAlert, modalConfirm} from "./modalAlert";
 import Util from "../__utils";
 import {MaskLayer} from "../maskLayer";
 import {Button} from "../general";
@@ -29,8 +29,8 @@ interface IModalHeaderPara {
 }
 
 interface IModalFooterPara {
-    rightPanel?: Button[] | React.ReactNode;
-    leftPanel?: Button[] | React.ReactNode;
+    rightPanel?: React.ReactElement<Button>[] | React.ReactNode;
+    leftPanel?: React.ReactElement<Button>[] | React.ReactNode;
 }
 
 interface IModalState extends IModal {
@@ -178,6 +178,7 @@ export class Modal extends React.Component<IModal, IModalState> {
 
     static alert = modalAlert;
 
+    static confirm = modalConfirm;
 }
 
 interface IModalHeader extends IModalHeaderPara {
