@@ -23,6 +23,9 @@
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+  -webkit-transition: all .3s cubic-bezier(.645,.045,.355,1);
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  position: relative;
 
   span {
     color: inherit;

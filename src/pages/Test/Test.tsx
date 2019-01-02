@@ -9,7 +9,8 @@ export class Test extends React.Component<{}, obj>{
         super(props);
         this.state = {
             val: '1',
-            isShow: true
+            isShow: true,
+            disabled: false
         }
     }
 
@@ -25,7 +26,7 @@ export class Test extends React.Component<{}, obj>{
                 }}/>
             </div>
             <div>
-                <Button icon={'search'} disabled={false} text="show" type="primary"/>
+                <Button icon={'search'} disabled={this.state.disabled} text="" type="primary"/>
             </div>
             <div>
                 <Button disabled={false} text="show" type="info"/>
@@ -37,7 +38,15 @@ export class Test extends React.Component<{}, obj>{
                 <Button disabled={false} text="show" type="danger"/>
             </div>
             <div>
-                <Button disabled={false} text="show" type="link"/>
+                <Button disabled={false} text="isDisabled" type="link" onClick={() => {
+                    Modal.confirm({
+                        msg: 'aaaa',
+                        onClick: (flag) => {
+                            this.setState({disabled: flag});
+                            console.log(flag);
+                        }
+                    });
+                }}/>
             </div>
             <Modal isOnceRender={false} isShow={this.state.isShow} onClose={() => {
                 this.setState({isShow: false});
@@ -57,11 +66,5 @@ export class Test extends React.Component<{}, obj>{
     }
 
     componentDidMount(){
-        Modal.confirm({
-            msg: 'aaaa',
-            onClick: (flag) => {
-                console.log(flag);
-            }
-        });
     }
 }

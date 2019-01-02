@@ -16,13 +16,20 @@
   padding: 0;
 
   &.animation{
-    animation: bounceInDown .6s;
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: bounceInDown;
+    animation-name: bounceInDown;
   }
 
   &.modal-alert, &.modal-confirm{
-    animation: animate-fadein-center .3s;
     border-radius: 10px;
-
+    &.animation{
+      -webkit-animation-name: animate-fadein-center;
+      animation-name: animate-fadein-center;
+    }
     .modal-header{
       border-bottom: none;
       .modal-title{
@@ -99,10 +106,6 @@
     &.animation {
       -webkit-animation-name: zoomIn;
       animation-name: zoomIn;
-      -webkit-animation-duration: .4s;
-      animation-duration: .4s;
-      -webkit-animation-fill-mode: both;
-      animation-fill-mode: both;
     }
 
     .modal-body{

@@ -43,6 +43,7 @@ export class Button extends React.Component<IButton, IButtonState> {
             icon,
             btnType
         } = this.props;
+
         return <button type={btnType} className={
             [
                 'btn',
@@ -57,6 +58,6 @@ export class Button extends React.Component<IButton, IButtonState> {
         }>
             {tools.isEmpty(icon) ? null : <span className={'iconfont icon-' + icon}/>}
             <span>{text}</span>
-            </button>
+        </button>
     }
 }

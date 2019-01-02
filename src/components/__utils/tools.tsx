@@ -24,6 +24,7 @@ const Tools = {
     isNotEmpty(val: any){
         return !Tools.isEmpty(val);
     },
+    tuple:  <T extends string[]>(...args: T) => args,
     pattern: {
         throttling: function(action: Function, delay: number){ // 函数节流
             let last = 0;

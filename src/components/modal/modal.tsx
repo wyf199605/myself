@@ -42,6 +42,7 @@ let modals: Modal[] = [];
 
 export class Modal extends React.Component<IModal, IModalState> {
     protected static isBindGlobalKeyDown = false;
+
     constructor(props: IModal) {
         super(props);
         this.state = Object.assign({
@@ -49,10 +50,10 @@ export class Modal extends React.Component<IModal, IModalState> {
             isRender: true,
         }, props);
 
-        if(!Modal.isBindGlobalKeyDown){
+        if (!Modal.isBindGlobalKeyDown) {
             Modal.isBindGlobalKeyDown = true;
             document.body.addEventListener('keydown', (e: KeyboardEvent) => {
-                if(e.keyCode === 27){
+                if (e.keyCode === 27) {
                     let modal = modals[0];
                     modal && modal.closeModal();
                 }
@@ -63,7 +64,7 @@ export class Modal extends React.Component<IModal, IModalState> {
     componentWillReceiveProps(nextProps: IModal) {
         this.setState((prevState) => {
             let isRender = prevState.isRender;
-            if(prevState.isOnceRender && !prevState.isShow){
+            if (prevState.isOnceRender && !prevState.isShow) {
                 isRender = false;
             }
             return Object.assign({isRender}, nextProps);
@@ -91,14 +92,15 @@ export class Modal extends React.Component<IModal, IModalState> {
             }
         });
         let index = modals.indexOf(this);
-        if(~index){
+        if (~index) {
             modals.splice(index, 1);
         }
         let handler = this.props.onClose;
         handler && handler();
+
     }
 
-    protected fullScreen(){
+    protected fullScreen() {
         this.setState((prevState) => {
             return {
                 isFullScreen: !prevState.isFullScreen
@@ -108,8 +110,8 @@ export class Modal extends React.Component<IModal, IModalState> {
         handler && handler();
     }
 
-    exitHandler(e: React.KeyboardEvent<HTMLDivElement>){
-        if(e.keyCode === 27){
+    exitHandler(e: React.KeyboardEvent<HTMLDivElement>) {
+        if (e.keyCode === 27) {
             this.closeModal();
         }
     }
@@ -135,40 +137,40 @@ export class Modal extends React.Component<IModal, IModalState> {
             }
         }
 
-        if(isShow){
+        if (isShow) {
             modals.unshift(this);
         }
         return isRender ? <>
-            <div tabIndex={-1} ref={(el) => {
-                this.wrapper = el;
-            }} onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
-                this.exitHandler(e);
-            }} style={{
-                width: width + 'px',
-                top: top + 'px',
-                zIndex: zIndex
-            }} className={
-                [
-                    'modal-wrapper',
-                    className,
-                    isShow ? null : 'hide',
-                    isFullScreen ? 'full-screen-modal' : null,
-                    isAnimated ? 'animation' : null,
-                ].filter((className) => tools.isNotEmpty(className)).join(' ')
-            }>
-                {tools.isNotEmpty(header) ? <ModalHeader {...header} onClose={() => {
-                    this.closeModal();
-                }} onLager={() => {
-                    this.fullScreen();
-                }}/> : null}
-                <div className="modal-body">
-                    {this.props.children}
-                </div>
-                {tools.isNotEmpty(footer) ? <ModalFooter {...footer}/> : null}
-            </div>
-            {isBackground ? <MaskLayer isShow={isShow} zIndex={zIndex - 1} onClick={() => {
+        <div tabIndex={-1} ref={(el) => {
+            this.wrapper = el;
+        }} onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+            this.exitHandler(e);
+        }} style={{
+            width: width + 'px',
+            top: top + 'px',
+            zIndex: zIndex
+        }} className={
+            [
+                'modal-wrapper',
+                className,
+                isShow ? null : 'hide',
+                isFullScreen ? 'full-screen-modal' : null,
+                isAnimated ? 'animation' : null,
+            ].filter((className) => tools.isNotEmpty(className)).join(' ')
+        }>
+            {tools.isNotEmpty(header) ? <ModalHeader {...header} onClose={() => {
                 this.closeModal();
+            }} onLager={() => {
+                this.fullScreen();
             }}/> : null}
+            <div className="modal-body">
+                {this.props.children}
+            </div>
+            {tools.isNotEmpty(footer) ? <ModalFooter {...footer}/> : null}
+        </div>
+        {isBackground ? <MaskLayer isShow={isShow} zIndex={zIndex - 1} onClick={() => {
+            this.closeModal();
+        }}/> : null}
         </> : null;
     }
 
@@ -219,17 +221,17 @@ class ModalHeader extends React.Component<IModalHeader> {
     }
 }
 
-interface IModalFooter extends IModalFooterPara{
+interface IModalFooter extends IModalFooterPara {
 
 }
 
-class ModalFooter extends React.Component<IModalFooter>{
+class ModalFooter extends React.Component<IModalFooter> {
     constructor(props: IModalFooter) {
         super(props);
 
     }
 
-    render(){
+    render() {
         let {
             leftPanel,
             rightPanel
