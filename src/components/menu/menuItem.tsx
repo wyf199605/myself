@@ -11,7 +11,7 @@ export interface IMenuItem {
     __isExpand?: boolean
 }
 
-export interface IMenuItemState{
+export interface IMenuItemState {
     expandChildren: string[],
     isOpen: boolean;
     isLeaf: boolean;
@@ -39,7 +39,7 @@ export class MenuItem extends React.Component<IMenuItem, IMenuItemState> {
         onClick && onClick(name, content);
     }
 
-    openChangeHandler(){
+    openChangeHandler() {
         this.setState((prevState) => {
             return {
                 isOpen: !prevState.isOpen
@@ -47,15 +47,15 @@ export class MenuItem extends React.Component<IMenuItem, IMenuItemState> {
         })
     }
 
-    static renderMenuItems(children: React.ReactNode, props?: Partial<IMenuItem>, openName: string[] = []){
+    static renderMenuItems(children: React.ReactNode, props?: Partial<IMenuItem>, openName: string[] = []) {
         return React.Children.map(children, child => {
-            if(React.isValidElement<any>(child)){
+            if (React.isValidElement<any>(child)) {
                 let prevProp = child.props;
                 return React.cloneElement(child, Object.assign({
                     __isRoot: false,
                     __isExpand: ~openName.indexOf(prevProp.name)
                 }, props));
-            }else{
+            } else {
                 return null;
             }
         });
@@ -75,23 +75,25 @@ export class MenuItem extends React.Component<IMenuItem, IMenuItemState> {
             isLeaf
         } = this.state;
 
-        if(isLeaf){
+        if (isLeaf) {
             this.menuItems = MenuItem.renderMenuItems(children, {
                 __onClick,
             });
         }
 
         return __isRoot
-            ? this.menuItems
-            : <div onClick={(e) => {
-            this.clickHandler(e);
-        }} className={["menu-item-wrapper", disabled ? 'disabled' : null].join(' ')}>
-            <div className="menu-item-title" onClick={() => {
-                this.openChangeHandler();
-            }}>{title}</div>
-            {isLeaf ? <div className={['menu-item-children', isOpen ? null : 'hide'].join(' ')}>
-                {this.menuItems}
-            </div> : null}
-        </div>
+            ?
+            this.menuItems
+            :
+            <div onClick={(e) => {
+                this.clickHandler(e);
+            }} className={["menu-item-wrapper", disabled ? 'disabled' : null].join(' ')}>
+                <div className="menu-item-title" onClick={() => {
+                    this.openChangeHandler();
+                }}>{title}</div>
+                {isLeaf ? <div className={['menu-item-children', isOpen ? null : 'hide'].join(' ')}>
+                    {this.menuItems}
+                </div> : null}
+            </div>
     }
 }
