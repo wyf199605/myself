@@ -20,11 +20,14 @@ export class Menu extends React.Component<IMenu> {
     render(){
         let {
             disabled,
-            children
+            children,
+            onClick
         } = this.props;
 
         return <div className={["menu-wrapper", disabled ? 'disabled' : null].join(' ')}>
-            <MenuItem name="basic" __isRoot={true}>
+            <MenuItem name="basic" __isRoot={true} __onClick={(name, content) => {
+                onClick && onClick(name, content);
+            }}>
                 {children}
             </MenuItem>
         </div>

@@ -8,7 +8,8 @@ export interface IMenuItem {
     content?: any;
     __onClick?: (name: string, content: any) => void;
     __isRoot?: boolean;
-    __isExpand?: boolean
+    __isExpand?: boolean;
+    __onSelect: (name: string, isOpen: boolean) => void;
 }
 
 export interface IMenuItemState {
@@ -44,7 +45,9 @@ export class MenuItem extends React.Component<IMenuItem, IMenuItemState> {
             return {
                 isOpen: !prevState.isOpen
             }
-        })
+        });
+        let onSelect = this.props.__onSelect;
+        onSelect && onSelect(this.props.name, this.state.isOpen);
     }
 
     static renderMenuItems(children: React.ReactNode, props?: Partial<IMenuItem>, openName: string[] = []) {
@@ -78,6 +81,9 @@ export class MenuItem extends React.Component<IMenuItem, IMenuItemState> {
         if (isLeaf) {
             this.menuItems = MenuItem.renderMenuItems(children, {
                 __onClick,
+                __onSelect: () => {
+
+                }
             });
         }
 
@@ -89,7 +95,7 @@ export class MenuItem extends React.Component<IMenuItem, IMenuItemState> {
                 this.clickHandler(e);
             }} className={["menu-item-wrapper", disabled ? 'disabled' : null].join(' ')}>
                 <div className="menu-item-title" onClick={() => {
-                    this.openChangeHandler();
+                    isLeaf && this.openChangeHandler();
                 }}>{title}</div>
                 {isLeaf ? <div className={['menu-item-children', isOpen ? null : 'hide'].join(' ')}>
                     {this.menuItems}
