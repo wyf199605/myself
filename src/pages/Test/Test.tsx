@@ -3,6 +3,7 @@ import {Button} from "../../components/general";
 import {Modal} from "../../components/modal";
 import {TextInput} from "../../components/form";
 import {Spinner} from "../../components/spinner";
+import {Menu} from "../../components/menu";
 
 export class Test extends React.Component<{}, obj>{
     constructor(props: obj){
@@ -48,20 +49,22 @@ export class Test extends React.Component<{}, obj>{
                     });
                 }}/>
             </div>
-            <Modal isOnceRender={false} isShow={this.state.isShow} onClose={() => {
-                this.setState({isShow: false});
-            }
-            } isBackground={true} header={{
-                title: '提示',
-                isLager: true
-            }} footer={{
-                rightPanel: [
-                    <Button text="确定" key={1}/>,
-                    <Button text="取消" key={2} onClick={() => {
-                        this.setState({isShow: false})
-                    }}/>,
-                ]
-            }}>aaa</Modal>
+            <Menu onClick={(key) => {
+                console.log(key);
+            }}>
+                {
+                    [
+                        <Menu.item name={'a'} key={'a'} title="菜单1">
+                            <Menu.item name={'aa'} title="子菜单1"/>
+                            <Menu.item name={'ab'} title="子菜单2"/>
+                        </Menu.item>,
+                        <Menu.item name={'b'} key={'b'} title="菜单2">
+                            <Menu.item name={'ba'} title="子菜单1"/>
+                            <Menu.item name={'bb'} title="子菜单2"/>
+                        </Menu.item>
+                    ]
+                }
+            </Menu>
         </div>
     }
 
